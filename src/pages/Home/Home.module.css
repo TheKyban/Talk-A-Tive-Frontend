@@ -1,0 +1,30 @@
+.homeWrapper {
+    padding: 50px 25%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.headerText {
+    text-align: center;
+    font-weight: 300;
+    margin: 0;
+}
+
+
+
+
+.formWrapper {
+    margin-top: 15px;
+    transition: all 0.3s !important;
+}
+
+
+
+@media screen and (max-width:470px) {
+    .homeWrapper {
+        padding: 50px;
+    }
+
+}

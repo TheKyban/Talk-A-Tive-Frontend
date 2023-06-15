@@ -1,0 +1,13 @@
+.btn {
+    cursor: pointer;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1rem;
+
+    background-color: #3182CE;
+    color: #fff;
+
+    transition: all 0.3s;
+}

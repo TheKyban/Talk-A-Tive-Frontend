@@ -1,0 +1,18 @@
+.spinner {
+    display: inline-block;
+
+    height: 20px;
+    width: 20px;
+    border-bottom: 1px solid #fff;
+    border-radius: 50%;
+
+   animation: spin 1s linear infinite;
+
+}
+
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
