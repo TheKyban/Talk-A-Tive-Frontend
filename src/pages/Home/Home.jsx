@@ -4,6 +4,7 @@ import Card from '../../components/Card/Card'
 import Login from './Login/Login'
 import Signup from './Signup/Signup'
 import BUTTON from './BUTTON/BUTTON'
+import { motion } from 'framer-motion'
 
 const Home = () => {
     const [formSelected, setFormSelected] = useState("login")
@@ -18,7 +19,11 @@ const Home = () => {
             <Card>
                 <div>
                     {/* Radios */}
-                    <div>
+                    <motion.div
+                        initial={{ y: -200, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -200, opacity: 0 }}
+                    >
                         <BUTTON
                             text={"Login"}
                             For={"login"}
@@ -32,7 +37,7 @@ const Home = () => {
                             setFunc={setFormSelected}
                         />
 
-                    </div>
+                    </motion.div>
 
                     {/* Forms */}
                     <div className={styles.formWrapper}>

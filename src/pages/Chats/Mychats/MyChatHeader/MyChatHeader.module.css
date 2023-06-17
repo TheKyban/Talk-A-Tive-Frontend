@@ -1,0 +1,50 @@
+.headerWrapper {
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 650px;
+}
+
+.headerWrapper * {
+    margin: 0;
+}
+
+.header {
+    font-size: 1.7rem;
+    font-weight: 300;
+}
+
+.btnWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    background-color: #EDF2F7;
+    border: none;
+    outline: none;
+
+    padding: 5px 10px;
+    border-radius: 7px;
+
+    width: 180px;
+    height: 50px;
+}
+
+.btnText {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+.btnPlus {
+    font-size: 1.5rem;
+    margin: 0;
+
+    font-weight: 500;
+}

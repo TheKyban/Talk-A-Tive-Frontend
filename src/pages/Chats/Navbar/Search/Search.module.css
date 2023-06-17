@@ -1,0 +1,29 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.wrapper:hover {
+    background-color: #EDF2F7;
+}
+
+.img {
+    width: 18px;
+}
+
+.text {
+    font-weight: 500;
+}
+
+@media screen and (max-width:550px) {
+    .text {
+        display: none;
+    }
+}

@@ -1,0 +1,72 @@
+.sidebarWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+#blank {
+    background-color: #0000000e;
+    width: 100%;
+    
+}
+.sidebar * {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: 300px;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px 15px;
+    z-index: 5;
+}
+
+
+.sidebar h1 {
+    font-weight: 400;
+    font-size: 1.3rem;
+    text-align: start;
+    margin: 10px 0;
+}
+
+.formWrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+
+.formWrapper input {
+    font-size: 1rem;
+    outline: none;
+    border: 2px solid #8787f1;
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.formWrapper button {
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+
+}

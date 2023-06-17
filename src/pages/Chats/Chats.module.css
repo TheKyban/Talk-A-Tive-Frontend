@@ -1,0 +1,27 @@
+.chats {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 15px;
+
+    width: 100vw;
+
+    gap: 15px;
+}
+
+.singleChat {
+    flex: 2;
+}
+
+.mychats {
+    flex: 1;
+}
+
+
+@media screen and (max-width:670px) {
+
+    .singleChat {
+        display: none;
+    }
+}

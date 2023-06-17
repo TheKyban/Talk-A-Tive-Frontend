@@ -1,0 +1,51 @@
+.headerWrapper * {
+    margin: 0;
+}
+
+
+.headerWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+
+
+    padding: 0px 10px;
+}
+
+.name {
+    font-weight: 300;
+}
+
+
+.arrowWrapper,
+.eyeIcon {
+    background-color: #EDF2F7;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+.arrow,
+.eye {
+    width: 20px;
+    vertical-align: middle;
+}
+
+.eye {
+    cursor: pointer;
+}
+
+.arrow {
+    transform: rotate(180deg);
+}
+
+.arrowWrapper {
+    display: none;
+}
+
+@media screen and (max-width:670px) {
+
+    .arrowWrapper {
+        display: none;
+    }
+}

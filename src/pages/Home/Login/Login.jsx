@@ -7,11 +7,9 @@ import { motion } from 'framer-motion'
 const Login = () => {
     return (
         <motion.div className={styles.form}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: .5 }}
-
+            initial={{ x: -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x:-200,opacity: 0 }}
         >
             <Input
                 label={"Email"}
