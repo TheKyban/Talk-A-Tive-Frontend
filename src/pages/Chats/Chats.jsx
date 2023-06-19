@@ -10,7 +10,10 @@ import { useSelector } from 'react-redux'
 const Chats = () => {
 
   const { isAuth } = useSelector(state => state.Auth)
+  const { selectedUser } = useSelector(state => state.User)
   const navigate = useNavigate()
+  const windowWidth = window.innerWidth
+
 
   /**
    * checking user is authenticated or not
@@ -18,12 +21,10 @@ const Chats = () => {
 
 
   useLayoutEffect(() => {
-
     let clear = false
-    if (!isAuth && !clear) {
+    if (!isAuth) {
       navigate("/")
     }
-
     return () => {
       clear = true
     }
@@ -37,15 +38,31 @@ const Chats = () => {
       <Navbar />
 
       <div className={styles.chats}>
-        <div className={styles.mychats}>
+        {
+          windowWidth <= 860 ? ((windowWidth <= 860 && selectedUser) ? (
+            <div className={styles.singleChat}>
+              <SingleChat />
+            </div>
 
-          <Mychats />
-        </div>
+          ) : (
+            <div className={styles.mychats}>
+              <Mychats />
+            </div>
+          )) : (
+            <>
+              <div className={styles.mychats}>
+                <Mychats />
+              </div>
+              <div className={styles.singleChat}>
+                <SingleChat />
+              </div>
+            </>
 
-        <div className={styles.singleChat}>
-          <SingleChat />
+          )
+        }
 
-        </div>
+
+
       </div>
 
     </div>

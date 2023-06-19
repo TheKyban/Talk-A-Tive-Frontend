@@ -13,8 +13,9 @@
 #blank {
     background-color: #0000000e;
     width: 100%;
-    
+
 }
+
 .sidebar * {
     margin: 0;
     padding: 0;
@@ -69,4 +70,11 @@
     font-size: 1rem;
     font-weight: 400;
 
+}
+
+.persons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

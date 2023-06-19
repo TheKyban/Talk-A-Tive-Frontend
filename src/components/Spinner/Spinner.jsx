@@ -2,9 +2,9 @@ import React from 'react'
 import styles from './Spinner.module.css'
 
 
-const Spinner = () => {
+const Spinner = ({ color }) => {
     return (
-        <span className={`${styles.spinner} spinner`}></span>
+        <span style={{ borderBottom: color && `1px solid ${color}` }} className={`${styles.spinner}`}></span>
     )
 }
 

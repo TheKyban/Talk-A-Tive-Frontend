@@ -12,6 +12,8 @@ export const loginApi = async (data) => await http.post("/user/login", data)
 export const logoutApi = async () => await http.get("/user/logout")
 export const refresh = async (cancelToken) => await http.get("/user/refresh", { cancelToken: cancelToken })
 
+export const createChat = async (userId) => await http.post("/chat/createchat", { userId })
+
 
 /**
  * Interceptors for testing

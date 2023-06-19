@@ -2,7 +2,9 @@ import React from 'react'
 import MyChatHeader from '../../../components/Chats/MyChatHeader/MyChatHeader'
 import styles from './Mychats.module.css'
 import { motion } from 'framer-motion'
+import Person from '../../../components/Person/Person'
 const Mychats = () => {
+    
     return (
         <motion.div className={styles.MychatsWrapper}
             initial={{ x: -200, opacity: 0 }}
@@ -12,24 +14,12 @@ const Mychats = () => {
             <MyChatHeader />
 
             <div className={styles.personsWrapper}>
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
-                <Person name={"aditya"} />
+
             </div>
         </motion.div>
     )
 }
 
-const Person = ({ name }) => <p className={styles.person}>{name}</p>
+
 
 export default Mychats

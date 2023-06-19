@@ -2,8 +2,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home/Home';
 import Chats from './pages/Chats/Chats';
 import { useLayoutEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { refresh } from './http/http';
+import { useDispatch, useSelector } from 'react-redux';
+import { URL, refresh } from './http/http';
 import { authenticateUser } from './store/slices/authSlice';
 import axios from 'axios';
 
@@ -11,13 +11,14 @@ function App() {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  const { isAuth } = useSelector(state => state.Auth)
   /**
      * checking user is authenticated or not
      */
 
 
   useLayoutEffect(() => {
+
 
     /**
      * OnRefresh
@@ -32,6 +33,7 @@ function App() {
          * Authenticating the user again
          */
 
+        console.log(res.data)
         dispatch(authenticateUser(res.data))
 
         if (res.data.success) {
@@ -40,7 +42,8 @@ function App() {
 
       }).catch(err => {
         if (axios.isCancel(err)) {
-          console.log("cancel")
+          console.log(err)
+          console.log("Request cleared")
         }
       })
 
@@ -50,7 +53,7 @@ function App() {
 
 
     return () => {
-      cancelToken.cancel()
+      // cancelToken.cancel()
     }
 
   }, [])
