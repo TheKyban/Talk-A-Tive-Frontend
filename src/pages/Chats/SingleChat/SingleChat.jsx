@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './SingleChat.module.css'
-import SingleChatHeader from './SingleChatHeader/SingleChatHeader'
+import SingleChatHeader from '../../../components/Chats/SingleChatHeader/SingleChatHeader'
 import sendIcon from '../../../Images/send.svg'
 import { motion } from 'framer-motion'
 

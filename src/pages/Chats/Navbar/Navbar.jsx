@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './Navbar.module.css'
-import Search from './Search/Search'
-import Profile from './Profile/Profile'
+import Search from '../../../components/Chats/NavBar/Search/Search'
+import Profile from '../../../components/Chats/NavBar/Profile/Profile'
 import Sidebar from '../../../components/Sidebar/Sidebar'
 
 

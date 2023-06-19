@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styles from './Profile.module.css'
 import arrow from '../../../../Images/downArrow.svg'
-import Badge from '../../../../components/Badge/Badge'
+import Badge from '../../../Badge/Badge'
 import bellIcon from '../../../../Images/bell.svg'
-import PopUpCard from '../../../../components/PopUpCard/PopUpCard'
-import DropDown from '../../../../components/DropDown/DropDown'
+import PopUpCard from '../../../PopUpCard/PopUpCard'
+import DropDown from '../../../DropDown/DropDown'
 
 const Profile = () => {
 

@@ -1,11 +1,20 @@
 import React from 'react'
 import styles from './DropDown.module.css'
 import { motion } from 'framer-motion'
+import { logoutApi } from '../../http/http'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { logoutUser } from '../../store/slices/authSlice'
+
+
 
 const DropDown = ({ showProfile, onclose }) => {
-
-    const logout = () => {
-
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const logout = async () => {
+        await logoutApi()
+        await dispatch(logoutUser())
+        navigate("/")
     }
 
     return (

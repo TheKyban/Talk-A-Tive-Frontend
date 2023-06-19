@@ -1,5 +1,5 @@
 import React from 'react'
-import MyChatHeader from './MyChatHeader/MyChatHeader'
+import MyChatHeader from '../../../components/Chats/MyChatHeader/MyChatHeader'
 import styles from './Mychats.module.css'
 import { motion } from 'framer-motion'
 const Mychats = () => {

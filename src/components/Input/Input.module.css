@@ -26,3 +26,14 @@
     outline: 2px solid rgb(181, 121, 238);
     background-color: #fff;
 }
+
+.input[type="file"] {
+    display: none;
+}
+.input[type="checkbox"] {
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 2rem;
+    align-self: self-start;
+    border-radius: 3px;
+}

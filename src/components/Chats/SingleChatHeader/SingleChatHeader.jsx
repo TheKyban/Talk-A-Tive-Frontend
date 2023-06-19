@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import eyeIcon from '../../../../Images/eye.svg'
+import eyeIcon from '../../../Images/eye.svg'
 import styles from "./SingleChatHeader.module.css"
-import arrow from '../../../../Images/arrow.svg'
-import PopUpCard from '../../../../components/PopUpCard/PopUpCard'
+import arrow from '../../../Images/arrow.svg'
+import PopUpCard from '../../PopUpCard/PopUpCard'
 
 
 const SingleChatHeader = () => {
@@ -10,11 +10,11 @@ const SingleChatHeader = () => {
     return (
         <div className={styles.headerWrapper}>
             <div className={styles.arrowWrapper} >
-                <img src={arrow} className={styles.arrow} />
+                <img src={arrow} className={styles.arrow} alt='arrow' />
             </div>
             <h1 className={styles.name}>Aditya</h1>
             <div className={styles.eyeIcon} onClick={() => setShowProfile(true)}>
-                <img src={eyeIcon} className={styles.eye} />
+                <img src={eyeIcon} className={styles.eye} alt='eye' />
             </div>
             {
                 showProfile && <PopUpCard

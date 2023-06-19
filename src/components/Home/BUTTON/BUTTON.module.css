@@ -8,4 +8,5 @@
     font-size: 1.2rem;
 
     cursor: pointer;
+    -webkit-tap-highlight-color: #00000000;
 }
