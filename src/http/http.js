@@ -13,8 +13,9 @@ export const logoutApi = async () => await http.get("/user/logout")
 export const refresh = async (cancelToken) => await http.get("/user/refresh", { cancelToken: cancelToken })
 
 export const createChat = async (userId) => await http.post("/chat/createchat", { userId })
-
-
+export const findChats = async (cancelToken) => await http.get("/chat/findchat", { cancelToken: cancelToken })
+export const createMessageApi = async (data) => await http.post("/message/create", data)
+export const fetchMessage = async (chatId) => await http.get(`message/fetch/${chatId}`)
 /**
  * Interceptors for testing
  */

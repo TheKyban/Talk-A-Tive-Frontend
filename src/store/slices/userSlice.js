@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
     name: "User",
     initialState: {
-        selectedUser: null
+        selectedUser: null,
+        allChats: []
     },
     reducers: {
         selectUser: (state, action) => {
@@ -13,9 +14,19 @@ export const userSlice = createSlice({
         unSelectUser: (state) => {
             state.selectedUser = null
         },
+        
+        allChats: (state, action) => {
+            state.allChats = action.payload
+        },
 
+        appendToAllChats: (state, action) => {
+            state.allChats.push(action.payload)
+        },
+        removeAllChats: (state) => {
+            state.allChats = []
+        }
     }
 })
 
-export const { selectUser, unSelectUser } = userSlice.actions
+export const { selectUser, unSelectUser, allChats, appendToAllChats, removeAllChats } = userSlice.actions
 export default userSlice.reducer

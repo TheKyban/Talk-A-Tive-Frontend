@@ -1,10 +1,9 @@
 import React from 'react'
-import avatar from '../../Images/avatar.jpg'
 
 import styles from './Badge.module.css'
-const Badge = () => {
+const Badge = ({ picture }) => {
     return (
-        <img  className={styles.img} src={avatar} alt="avatar" />
+        picture && <img className={styles.img} src={picture} alt="avatar" />
     )
 }
 

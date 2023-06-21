@@ -23,8 +23,8 @@
     width: 100%;
     background-color: #e8e8e8;
     border-radius: 10px;
-
-    overflow-y: auto;
+    padding: 10px;
+    overflow-y: hidden;
 }
 
 .inputWrapper {
@@ -63,3 +63,50 @@
     width: 22px;
     vertical-align: middle;
 }
+
+.nothing {
+    text-align: center;
+    font-weight: 300;
+}
+
+.messagebox {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1.1rem;
+    padding-top: 10px;
+}
+
+.messagebox::-webkit-scrollbar {
+    display: none;
+}
+
+.messagebox .other {
+    display: inline-block;
+    max-width: 70%;
+    width: fit-content;
+    line-height: 1.2;
+    background-color: #f9ffd9;
+    padding: 10px;
+    border-radius: 3px 10px 10px 3px;
+}
+
+.messagebox .other span {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.messagebox .me {
+    display: inline-block;
+    text-align: end;
+    align-self: flex-end;
+    word-break: break-all;
+    word-wrap: break-word;
+    max-width: 70%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px 3px 3px 10px;
+    letter-spacing: 0.5px;
+}
+
+.messagebox .me span {}

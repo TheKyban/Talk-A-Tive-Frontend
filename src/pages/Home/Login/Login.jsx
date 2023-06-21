@@ -16,7 +16,7 @@ const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    
+
     const login = async () => {
         if (!email || !password) {
             console.log("please enter email and password")
@@ -28,6 +28,8 @@ const Login = () => {
         try {
             const { data } = await loginApi({ email, password })
             dispatch(authenticateUser(data))
+            localStorage.setItem("isAuth",data.success)
+            localStorage.setItem("user",data.data)
             setLoading(false)
             navigate("/chats")
         } catch (error) {

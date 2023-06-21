@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import Navbar from './Navbar/Navbar'
 import Mychats from './Mychats/Mychats'
 import SingleChat from './SingleChat/SingleChat'
@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 const Chats = () => {
 
-  const { isAuth } = useSelector(state => state.Auth)
+  // const { isAuth } = useSelector(state => state.Auth)
   const { selectedUser } = useSelector(state => state.User)
   const navigate = useNavigate()
   const windowWidth = window.innerWidth
@@ -20,11 +20,14 @@ const Chats = () => {
    */
 
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let clear = false
+    const isAuth = localStorage.getItem("isAuth")
     if (!isAuth) {
       navigate("/")
     }
+
+
     return () => {
       clear = true
     }

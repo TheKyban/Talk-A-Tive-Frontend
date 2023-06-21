@@ -1,11 +1,12 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home/Home';
 import Chats from './pages/Chats/Chats';
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { URL, refresh } from './http/http';
+import { URL, findChats, refresh } from './http/http';
 import { authenticateUser } from './store/slices/authSlice';
 import axios from 'axios';
+import { allChats } from './store/slices/userSlice';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
      */
 
 
-  useLayoutEffect(() => {
+  useEffect(() => {
 
 
     /**
@@ -33,8 +34,14 @@ function App() {
          * Authenticating the user again
          */
 
-        console.log(res.data)
-        dispatch(authenticateUser(res.data))
+        const current = res.data
+        dispatch(authenticateUser(current))
+
+
+        /**
+         * Fetching chats
+         */
+
 
         if (res.data.success) {
           navigate("/chats")
@@ -47,13 +54,22 @@ function App() {
         }
       })
 
+
+
+    let temp = false
+    if (isAuth && !temp) {
+      navigate("/chats")
+    }
+
+
     /**
      * Cleaning the api call
      */
 
 
     return () => {
-      // cancelToken.cancel()
+      cancelToken.cancel()
+      temp = true
     }
 
   }, [])

@@ -43,7 +43,33 @@
     display: none;
 }
 
-@media screen and (max-width:670px) {
+
+.profileDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.profileName {
+    margin: 0;
+}
+
+.profileImage {
+    height: 150px;
+    width: 150px;
+    background-size: contain;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.profieEmail {
+    margin: 0;
+    font-weight: 300;
+}
+
+@media screen and (max-width:860px) {
 
     .arrowWrapper {
         display: block;

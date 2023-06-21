@@ -5,6 +5,7 @@ import { logoutApi } from '../../http/http'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../store/slices/authSlice'
+import { removeAllChats, unSelectUser } from '../../store/slices/userSlice'
 
 
 
@@ -14,6 +15,9 @@ const DropDown = ({ showProfile, onclose }) => {
     const logout = async () => {
         await logoutApi()
         await dispatch(logoutUser())
+        dispatch(removeAllChats())
+        dispatch(unSelectUser())
+        localStorage.clear()
         navigate("/")
     }
 

@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { unSelectUser } from '../../../store/slices/userSlice'
 
 
-const SingleChatHeader = () => {
+const SingleChatHeader = ({ data }) => {
     const [showProfile, setShowProfile] = useState(false)
     const dispatch = useDispatch()
     const unSelectingUser = () => {
@@ -18,14 +18,21 @@ const SingleChatHeader = () => {
             <div className={styles.arrowWrapper} onClick={unSelectingUser}>
                 <img src={arrow} className={styles.arrow} alt='arrow' />
             </div>
-            <h1 className={styles.name}>Aditya</h1>
+            <h1 className={styles.name}>{data.name}</h1>
             <div className={styles.eyeIcon} onClick={() => setShowProfile(true)}>
                 <img src={eyeIcon} className={styles.eye} alt='eye' />
             </div>
             {
                 showProfile && <PopUpCard
                     closeFunc={() => setShowProfile(!showProfile)}
-                />
+                >
+
+                    <div className={styles.profileDetailsWrapper}>
+                        <h1 className={styles.profileName}>{data.name}</h1>
+                        <img src={data.picture} alt="" className={styles.profileImage} />
+                        <h3 className={styles.profieEmail}>{data.email}</h3>
+                    </div>
+                </PopUpCard>
             }
 
         </div>

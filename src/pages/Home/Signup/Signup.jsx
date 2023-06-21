@@ -52,8 +52,11 @@ const Signup = () => {
                 name, email, password
             })
 
-            console.log(data.message
-                )
+            console.log(data.message)
+
+            localStorage.setItem("isAuth", data.success)
+            localStorage.setItem("user", data.data)
+            
             dispatch(authenticateUser(data))
             setLoading(false)
 

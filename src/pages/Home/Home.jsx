@@ -11,12 +11,14 @@ import { useLayoutEffect } from 'react'
 
 const Home = () => {
     const [formSelected, setFormSelected] = useState("login")
-    const { isAuth } = useSelector(state => state.Auth)
+    // const { isAuth } = useSelector(state => state.Auth)
     const navigate = useNavigate()
 
 
     useLayoutEffect(() => {
         let clear = false
+
+        const isAuth = localStorage.getItem("isAuth")
 
         if (isAuth && !clear) {
             navigate("/chats")
@@ -25,7 +27,7 @@ const Home = () => {
         return () => {
             clear = true
         }
-    }, [isAuth])
+    }, [])
 
 
     return (

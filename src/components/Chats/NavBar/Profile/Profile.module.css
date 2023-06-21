@@ -24,7 +24,7 @@
     gap: 10px;
 
     cursor: pointer;
-    -webkit-tap-highlight-color: rgba(0,0,0,0)
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
 .bell {
@@ -34,4 +34,28 @@
 .arrow {
     max-width: 13px;
     cursor: pointer;
+}
+.profileDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.profileName {
+    margin: 0;
+}
+
+.profileImage {
+    height: 150px;
+    width: 150px;
+    background-size: contain;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.profieEmail {
+    margin: 0;
+    font-weight: 300;
 }
