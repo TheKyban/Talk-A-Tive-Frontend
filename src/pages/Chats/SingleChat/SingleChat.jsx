@@ -117,3 +117,6 @@ const SingleChat = () => {
 };
 
 export default SingleChat;
+
+
+// mongosh "mongodb+srv://cluster0.y6eehy3.mongodb.net/" --apiVersion 1 --username aaditya1392

@@ -9,7 +9,7 @@ import store from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
 
     <Provider store={store}> {/* Redux Store  */}
 
@@ -19,7 +19,7 @@ root.render(
 
     </Provider>
 
-  // </React.StrictMode>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

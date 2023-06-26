@@ -10,3 +10,6 @@
     cursor: pointer;
     -webkit-tap-highlight-color: #00000000;
 }
+.btnFormHeader:disabled{
+    color: initial;
+}

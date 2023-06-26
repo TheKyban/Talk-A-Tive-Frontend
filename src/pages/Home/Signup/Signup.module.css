@@ -11,3 +11,25 @@
     gap: 8px;
 
 }
+
+
+.label {
+	font-weight: 500;
+	margin: 0;
+}
+
+.label span {
+	color: red;
+}
+
+.checkbox {
+    margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.checkbox  input[type="checkbox"] {
+	margin-right: 10px;
+    vertical-align: top;
+}

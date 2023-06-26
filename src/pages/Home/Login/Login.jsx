@@ -1,86 +1,80 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import Input from '../../../components/Input/Input'
-import Button from '../../../components/Button/Button'
-import styles from './Login.module.css'
-import { motion } from 'framer-motion'
-import { loginApi } from '../../../http/http'
-import { authenticateUser } from '../../../store/slices/authSlice'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import Input from "../../../components/Input/Input";
+import Button from "../../../components/Button/Button";
+import styles from "./Login.module.css";
+import { motion } from "framer-motion";
 
-const Login = () => {
-    const [show, setShow] = useState(false)
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [loading, setLoading] = useState(false)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+const Login = ({
+	details,
+	setDetails,
+	changeHandler,
+	loading,
+	submitHandler,
+}) => {
+	const [show, setShow] = useState(false);
 
+	return (
+		<motion.div
+			className={styles.form}
+			initial={{ x: -200, opacity: 0 }}
+			animate={{ x: 0, opacity: 1 }}
+			exit={{ x: -200, opacity: 0 }}
+		>
+			{/* Email */}
+			<label className={styles.label} htmlFor="Email">
+				Email<span> *</span>
+			</label>
+			<Input
+				type={"email"}
+				placeholder={"Enter Your Email"}
+				value={details.email}
+				name={"email"}
+				onChange={changeHandler}
+			/>
 
-    const login = async () => {
-        if (!email || !password) {
-            console.log("please enter email and password")
-            return;
-        }
+			{/* Password */}
+			<label className={styles.label}>
+				Password<span> *</span>
+			</label>
+			<Input
+				placeholder={"Enter Your Password"}
+				type={show ? "text" : "password"}
+				name={"password"}
+				value={details.password}
+				onChange={changeHandler}
+			/>
 
-        setLoading(true)
+			{/* Show password */}
 
-        try {
-            const { data } = await loginApi({ email, password })
-            dispatch(authenticateUser(data))
-            localStorage.setItem("isAuth",data.success)
-            localStorage.setItem("user",data.data)
-            setLoading(false)
-            navigate("/chats")
-        } catch (error) {
-            setLoading(false)
-            console.log(error)
-        }
-    }
+			<div className={styles.checkbox}>
+				<Input type={"checkbox"} onChange={() => setShow(!show)} />
+				<label className={styles.label}>Show Password</label>
+			</div>
 
-    return (
-        <motion.div className={styles.form}
-            initial={{ x: -200, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -200, opacity: 0 }}
-        >
-            <Input
-                label={"Email"}
-                placeholder={"Enter Your Name"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-                label={"Password"}
-                placeholder={"Enter Your Password"}
-                type={show ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+			{/* Buttons */}
+			<div className={styles.btns}>
+				{/* Login */}
+				<Button
+					text={"Login"}
+					onClick={submitHandler}
+					isLoading={loading}
+				/>
 
-            <Input type={"checkbox"}
-                label={"Show Password"}
-                onChange={() => setShow(!show)}
-            />
+				{/* Guest login */}
+				<Button
+					text={"Get Guest Credential"}
+					bg={"#c35718"}
+					HBG={"#b34e01"}
+					onClick={() => {
+						setDetails({
+							email: "user@example.com",
+							password: "12345",
+						});
+					}}
+				/>
+			</div>
+		</motion.div>
+	);
+};
 
-            <div className={styles.btns}>
-
-                <Button text={"Login"}
-                    onClick={login}
-                    isLoading={loading}
-                />
-                <Button
-                    text={"Get Guest Credential"}
-                    bg={"#c35718"}
-                    HBG={"#b34e01"}
-                    onClick={() => {
-                        setEmail("user@example.com")
-                        setPassword("12345")
-                    }}
-                />
-            </div>
-        </motion.div>
-    )
-}
-
-export default Login
+export default Login;
