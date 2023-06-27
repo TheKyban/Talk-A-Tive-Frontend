@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import { URL, createChat } from "../../http/http";
 import Person from "../Person/Person";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { selectUser, appendToAllChats } from "../../store/slices/userSlice";
 import Spinner from "../Spinner/Spinner";
 

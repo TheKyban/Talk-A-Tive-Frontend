@@ -9,10 +9,13 @@ import ScrollableFeed from "react-scrollable-feed";
 import { URL, createMessageApi, fetchMessage } from "../../../http/http";
 import { io } from "socket.io-client";
 
+import { v4 as uuid } from "uuid";
+
 let socket;
 
 const SingleChat = () => {
 	const { selectedUser } = useSelector((stata) => stata.User);
+	const { user } = useSelector((stata) => stata.Auth);
 	const [message, setMessage] = useState("");
 	const [messages, setMessages] = useState([]);
 
@@ -24,14 +27,37 @@ const SingleChat = () => {
 		if (!message.length >= 1) {
 			return;
 		}
-		const m = await createMessageApi({
+		const m = {
+			chatId: selectedUser.chatId,
+			content: message,
+			userId: user,
+			_id: uuid(),
+		};
+
+		/**
+		 * emmitting messages to socket.io
+		 */
+		socket.emit("update", m);
+		/**
+		 * append message in messages list
+		 */
+		setMessages((prev) => [...prev, m]);
+
+		/**
+		 * storing messges in db
+		 */
+		await createMessageApi({
 			chatId: selectedUser.chatId,
 			content: message,
 		});
 
-		socket.emit("update", m.data.messages);
 		setMessage("");
-		setMessages((prev) => [...prev, m.data.messages]);
+
+		/**
+		 * user id
+		 * messages id
+		 * messages
+		 */
 	};
 
 	/**
@@ -59,9 +85,13 @@ const SingleChat = () => {
 		socket.emit("join-chat", selectedUser);
 
 		return () => {
-			// socket.off()
+			socket.disconnect(true);
 		};
 	}, [selectedUser]);
+
+	/**
+	 * recieving new messages
+	 */
 
 	useEffect(() => {
 		let tem = false;
@@ -73,9 +103,9 @@ const SingleChat = () => {
 
 		return () => {
 			tem = true;
-			// socket.off()
+			socket.disconnect(true);
 		};
-	}, [io, selectedUser]);
+	}, [selectedUser]);
 
 	return selectedUser ? (
 		<motion.div
@@ -84,15 +114,20 @@ const SingleChat = () => {
 			animate={{ x: 0, opacity: 1 }}
 			exit={{ x: 200 }}
 		>
+			{/* Header */}
+
 			<SingleChatHeader data={selectedUser} />
 
+			{/* Chat Body */}
+
 			<div className={styles.chatBody}>
-				<ScrollableFeed
-					className={styles.messagebox}
-					// animateScroll={}
-				>
+				<ScrollableFeed className={styles.messagebox}>
 					{messages &&
 						messages.map((m) => {
+							/**
+							 * friend messages
+							 */
+
 							if (m.userId._id === selectedUser._id) {
 								return (
 									<div className={styles.other} key={m._id}>
@@ -100,6 +135,9 @@ const SingleChat = () => {
 									</div>
 								);
 							} else {
+								/**
+								 * my messages
+								 */
 								return (
 									<div className={styles.me} key={m._id}>
 										<span>{m.content}</span>
@@ -109,6 +147,8 @@ const SingleChat = () => {
 						})}
 				</ScrollableFeed>
 			</div>
+
+			{/* input */}
 
 			<form className={styles.inputWrapper} onSubmit={createMessage}>
 				<input
