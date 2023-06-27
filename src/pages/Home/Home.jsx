@@ -57,6 +57,12 @@ const Home = () => {
 				toast(data.message);
 				dispatch(authenticateUser(data));
 				setLoading(false);
+
+				setTimeout(() => {
+					if (data.success) {
+						navigate("/chats");
+					}
+				}, 1000);
 			} catch (error) {
 				setLoading(false);
 				toast(error.message);
@@ -97,6 +103,12 @@ const Home = () => {
 
 				dispatch(authenticateUser(data));
 				setLoading(false);
+
+				setTimeout(() => {
+					if (data.success) {
+						navigate("/chats");
+					}
+				}, 1000);
 			} catch (error) {
 				toast(error.message);
 				setLoading(false);
@@ -131,8 +143,7 @@ const Home = () => {
 			})
 			.catch((err) => {
 				if (axios.isCancel(err)) {
-					console.log(err);
-					console.log("Request cleared");
+					console.log("Request cleared from home");
 				}
 			});
 
@@ -143,7 +154,7 @@ const Home = () => {
 		return () => {
 			cancelToken.cancel();
 		};
-	}, [isAuth, navigate, dispatch]);
+	}, []);
 
 	return (
 		<div className={styles.homeWrapper}>

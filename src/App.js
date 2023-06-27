@@ -9,55 +9,6 @@ import axios from "axios";
 import { allChats } from "./store/slices/userSlice";
 
 function App() {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const { isAuth } = useSelector((state) => state.Auth);
-	/**
-	 * checking user is authenticated or not
-	 */
-
-	// useLayoutEffect(() => {
-	// 	/**
-	// 	 * OnRefresh
-	// 	 */
-
-	// 	const cancelToken = axios.CancelToken.source();
-
-	// 	refresh(cancelToken.token)
-	// 		.then((res) => {
-	// 			/**
-	// 			 * Authenticating the user again
-	// 			 */
-
-	// 			const current = res.data;
-	// 			dispatch(authenticateUser(current));
-
-	// 			/**
-	// 			 * Fetching chats
-	// 			 */
-
-	// 			if (res.data.success) {
-	// 				navigate("/chats");
-	// 			}
-	// 		})
-	// 		.catch((err) => {
-	// 			if (axios.isCancel(err)) {
-	// 				console.log(err);
-	// 				console.log("Request cleared");
-	// 			}
-	// 		});
-
-
-
-	// 	/**
-	// 	 * Cleaning the api call
-	// 	 */
-
-	// 	return () => {
-	// 		cancelToken.cancel();
-	// 	};
-	// }, [isAuth]);
-
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />

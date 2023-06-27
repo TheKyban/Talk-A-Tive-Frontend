@@ -27,6 +27,7 @@ const Chats = () => {
 
 		const cancelToken = axios.CancelToken.source();
 		if (!isAuth) {
+			console.log("runned")
 			refresh(cancelToken.token)
 				.then((res) => {
 					/**
@@ -44,7 +45,7 @@ const Chats = () => {
 				.catch((err) => {
 					if (axios.isCancel(err)) {
 						console.log(err);
-						console.log("Request cleared");
+						console.log("Request cleared from chat");
 					}
 				});
 

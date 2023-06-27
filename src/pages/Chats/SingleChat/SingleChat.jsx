@@ -16,6 +16,9 @@ const SingleChat = () => {
 	const [message, setMessage] = useState("");
 	const [messages, setMessages] = useState([]);
 
+	/**
+	 * send messages
+	 */
 	const createMessage = async (e) => {
 		e.preventDefault();
 		if (!message.length >= 1) {
@@ -31,6 +34,10 @@ const SingleChat = () => {
 		setMessages((prev) => [...prev, m.data.messages]);
 	};
 
+	/**
+	 * Fetching messages
+	 */
+
 	useEffect(() => {
 		if (selectedUser) {
 			fetchMessage(selectedUser.chatId).then((res) => {
@@ -38,6 +45,10 @@ const SingleChat = () => {
 			});
 		}
 	}, [selectedUser]);
+
+	/**
+	 * socket connection
+	 */
 
 	useEffect(() => {
 		if (!selectedUser) {
@@ -50,7 +61,7 @@ const SingleChat = () => {
 		return () => {
 			// socket.off()
 		};
-	}, [selectedUser, io]);
+	}, [selectedUser]);
 
 	useEffect(() => {
 		let tem = false;
@@ -80,21 +91,22 @@ const SingleChat = () => {
 					className={styles.messagebox}
 					// animateScroll={}
 				>
-					{messages.map((m) => {
-						if (m.userId._id === selectedUser._id) {
-							return (
-								<div className={styles.other} key={m._id}>
-									<span>{m.content}</span>
-								</div>
-							);
-						} else {
-							return (
-								<div className={styles.me} key={m._id}>
-									<span>{m.content}</span>
-								</div>
-							);
-						}
-					})}
+					{messages &&
+						messages.map((m) => {
+							if (m.userId._id === selectedUser._id) {
+								return (
+									<div className={styles.other} key={m._id}>
+										<span>{m.content}</span>
+									</div>
+								);
+							} else {
+								return (
+									<div className={styles.me} key={m._id}>
+										<span>{m.content}</span>
+									</div>
+								);
+							}
+						})}
 				</ScrollableFeed>
 			</div>
 
@@ -117,6 +129,3 @@ const SingleChat = () => {
 };
 
 export default SingleChat;
-
-
-// mongosh "mongodb+srv://cluster0.y6eehy3.mongodb.net/" --apiVersion 1 --username aaditya1392
