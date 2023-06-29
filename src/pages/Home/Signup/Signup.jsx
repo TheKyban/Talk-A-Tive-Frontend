@@ -15,7 +15,7 @@ const Signup = ({ details, changeHandler, loading, submitHandler }) => {
 			exit={{ x: 200, opacity: 0 }}
 		>
 			{/* Name */}
-			<label className={styles.label} htmlFor="Email">
+			<label className={styles.label} htmlFor="Name">
 				Name<span> *</span>
 			</label>
 			<Input
@@ -23,6 +23,7 @@ const Signup = ({ details, changeHandler, loading, submitHandler }) => {
 				value={details.name}
 				name={"name"}
 				onChange={changeHandler}
+				id={"Name"}
 			/>
 
 			{/* Email */}
@@ -34,10 +35,11 @@ const Signup = ({ details, changeHandler, loading, submitHandler }) => {
 				value={details.email}
 				name={"email"}
 				onChange={changeHandler}
+				id={"Email"}
 			/>
 
 			{/* Password */}
-			<label className={styles.label} htmlFor="Email">
+			<label className={styles.label} htmlFor="password">
 				Password<span> *</span>
 			</label>
 			<Input
@@ -46,10 +48,11 @@ const Signup = ({ details, changeHandler, loading, submitHandler }) => {
 				value={details.password}
 				name={"password"}
 				onChange={changeHandler}
+				id={"password"}
 			/>
 
 			{/* Confirm Password */}
-			<label className={styles.label} htmlFor="Email">
+			<label className={styles.label} htmlFor="confirmPassword">
 				Confirm Password<span> *</span>
 			</label>
 			<Input
@@ -58,12 +61,13 @@ const Signup = ({ details, changeHandler, loading, submitHandler }) => {
 				value={details.confirmPassword}
 				name={"confirmPassword"}
 				onChange={changeHandler}
+				id={"confirmPassword"}
 			/>
 
 			{/* Show password */}
 			<div className={styles.checkbox}>
-				<Input type={"checkbox"} onChange={() => setShow(!show)} />
-				<label className={styles.label}>Show Password</label>
+				<Input id={"checkbox"} type={"checkbox"} onChange={() => setShow(!show)} />
+				<label htmlFor="checkbox" className={styles.label}>Show Password</label>
 			</div>
 
 			{/* Button */}

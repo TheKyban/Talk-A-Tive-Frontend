@@ -27,7 +27,6 @@ const Chats = () => {
 
 		const cancelToken = axios.CancelToken.source();
 		if (!isAuth) {
-			console.log("runned")
 			refresh(cancelToken.token)
 				.then((res) => {
 					/**
@@ -35,7 +34,6 @@ const Chats = () => {
 					 */
 
 					const current = res.data;
-					console.log(current);
 					dispatch(authenticateUser(current));
 
 					if (!current.success) {

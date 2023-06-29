@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Sidebar.module.css";
 import { motion } from "framer-motion";
-import axios from "axios";
-import { URL, createChat } from "../../http/http";
+import { createChat, findUser } from "../../http/http";
 import Person from "../Person/Person";
 import { useDispatch } from "react-redux";
 import { selectUser, appendToAllChats } from "../../store/slices/userSlice";
@@ -46,13 +45,7 @@ const Sidebar = ({ onClose }) => {
 	const searchUsers = async () => {
 		try {
 			setLoading(true);
-			const { data } = await axios.get(
-				`${URL}/user/finduser?search=${query}`,
-				{
-					withCredentials: true,
-				},
-			);
-
+			const { data } = await findUser({ search: query });
 			setAllUser(data.data);
 			setLoading(false);
 		} catch (error) {

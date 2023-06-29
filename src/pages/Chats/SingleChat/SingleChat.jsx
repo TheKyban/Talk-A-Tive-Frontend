@@ -35,29 +35,27 @@ const SingleChat = () => {
 		};
 
 		/**
-		 * emmitting messages to socket.io
-		 */
-		socket.emit("update", m);
-		/**
 		 * append message in messages list
 		 */
 		setMessages((prev) => [...prev, m]);
+
+		/**
+		 * emmitting messages to socket.io
+		 */
+
+		socket.emit("update", m);
+
+		const newMessage = message;
+		setMessage("");
 
 		/**
 		 * storing messges in db
 		 */
 		await createMessageApi({
 			chatId: selectedUser.chatId,
-			content: message,
+			content: newMessage,
 		});
 
-		setMessage("");
-
-		/**
-		 * user id
-		 * messages id
-		 * messages
-		 */
 	};
 
 	/**
@@ -85,7 +83,7 @@ const SingleChat = () => {
 		socket.emit("join-chat", selectedUser);
 
 		return () => {
-			socket.disconnect(true);
+			// socket.disconnect(true);
 		};
 	}, [selectedUser]);
 
@@ -103,7 +101,7 @@ const SingleChat = () => {
 
 		return () => {
 			tem = true;
-			socket.disconnect(true);
+			// socket.disconnect(true);
 		};
 	}, [selectedUser]);
 

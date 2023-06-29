@@ -29,11 +29,12 @@ const Login = ({
 				placeholder={"Enter Your Email"}
 				value={details.email}
 				name={"email"}
+				id={"Email"}
 				onChange={changeHandler}
 			/>
 
 			{/* Password */}
-			<label className={styles.label}>
+			<label htmlFor="password" className={styles.label}>
 				Password<span> *</span>
 			</label>
 			<Input
@@ -42,13 +43,14 @@ const Login = ({
 				name={"password"}
 				value={details.password}
 				onChange={changeHandler}
+				id={"password"}
 			/>
 
 			{/* Show password */}
 
 			<div className={styles.checkbox}>
-				<Input type={"checkbox"} onChange={() => setShow(!show)} />
-				<label className={styles.label}>Show Password</label>
+				<Input id={"checkbox"} type={"checkbox"} onChange={() => setShow(!show)} />
+				<label htmlFor="checkbox" className={styles.label}>Show Password</label>
 			</div>
 
 			{/* Buttons */}
