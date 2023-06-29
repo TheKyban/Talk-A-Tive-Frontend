@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const URL = "http://localhost:7575";
+// export const URL = "http://localhost:7575";
+export const URL = "https://talk-a-tive-backend-rose.vercel.app";
 
 const http = axios.create({
 	baseURL: URL,
@@ -30,7 +31,7 @@ export const createMessageApi = async (data) =>
 
 export const fetchMessage = async (chatId) =>
 	await http.get(`message/fetch/${chatId}`);
-    
+
 /**
  * Interceptors for testing
  */
