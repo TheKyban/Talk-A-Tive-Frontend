@@ -1,77 +1,90 @@
 .headerWrapper * {
-    margin: 0;
+	margin: 0;
 }
-
 
 .headerWrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: center;
+
+	padding: 0px 10px;
+}
+
+.nameWrapper {
+	display: flex;
+	flex-direction: row;
     align-items: center;
-
-
-    padding: 0px 10px;
+    gap: 10px;
 }
-
 .name {
-    font-weight: 300;
+    height: 100%;
+	font-size: 1.3rem;
+	font-weight: 300;
+	position: relative;
+    vertical-align: middle;
 }
-
+.name > span {
+	margin-left: 10px;
+	font-size: 0.7rem;
+	position: absolute;
+	bottom: -12px;
+	left: -6px;
+}
 
 .arrowWrapper,
 .eyeIcon {
-    background-color: #EDF2F7;
-    padding: 8px 10px;
-    border-radius: 5px;
+	background-color: #edf2f7;
+	padding: 8px 10px;
+	border-radius: 5px;
+	width: fit-content;
 }
 
 .arrow,
 .eye {
-    width: 20px;
-    vertical-align: middle;
+	width: 20px;
+	vertical-align: middle;
 }
 
 .eye {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .arrow {
-    transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 
 .arrowWrapper {
-    display: none;
+	display: none;
 }
-
 
 .profileDetailsWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
 }
 .profileName {
-    margin: 0;
+	margin: 0;
 }
 
 .profileImage {
-    height: 150px;
-    width: 150px;
-    background-size: contain;
-    border-radius: 50%;
-    margin: 0;
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	border-radius: 50%;
+	margin: 0;
 }
 
 .profieEmail {
-    margin: 0;
-    font-weight: 300;
+	margin: 0;
+	font-weight: 300;
 }
 
-@media screen and (max-width:860px) {
-
-    .arrowWrapper {
-        display: block;
-    }
+@media screen and (max-width: 860px) {
+	.arrowWrapper {
+		display: block;
+	}
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./SingleChat.module.css";
 import SingleChatHeader from "../../../components/Chats/SingleChatHeader/SingleChatHeader";
 import sendIcon from "../../../Images/send.svg";
@@ -18,6 +18,8 @@ const SingleChat = () => {
 	const { user } = useSelector((stata) => stata.Auth);
 	const [message, setMessage] = useState("");
 	const [messages, setMessages] = useState([]);
+	const [isTyping, setIsTyping] = useState(false);
+
 
 	/**
 	 * send messages
@@ -55,7 +57,6 @@ const SingleChat = () => {
 			chatId: selectedUser.chatId,
 			content: newMessage,
 		});
-
 	};
 
 	/**
@@ -79,7 +80,9 @@ const SingleChat = () => {
 			return;
 		}
 
-		socket = io(URL);
+		socket = io(URL, {
+			withCredentials: true,
+		});
 		socket.emit("join-chat", selectedUser);
 
 		return () => {
@@ -97,14 +100,31 @@ const SingleChat = () => {
 			socket.on("newMessage", (data) => {
 				setMessages((pre) => [...pre, data]);
 			});
+
+			socket.on("isTyping", (data) => {
+				setIsTyping(data);
+			});
 		}
 
 		return () => {
 			tem = true;
-			// socket.disconnect(true);
 		};
 	}, [selectedUser]);
 
+	/**
+	 * onTyping
+	 */
+
+	let timeOut;
+
+	const onTyping = () => {
+		clearTimeout(timeOut);
+		socket.emit("typing", { chatId: selectedUser.chatId });
+
+		timeOut = setTimeout(() => {
+			socket.emit("notTyping", { chatId: selectedUser.chatId });
+		}, 2000);
+	};
 	return selectedUser ? (
 		<motion.div
 			className={styles.wrapper}
@@ -114,7 +134,7 @@ const SingleChat = () => {
 		>
 			{/* Header */}
 
-			<SingleChatHeader data={selectedUser} />
+			<SingleChatHeader data={selectedUser} isTyping={isTyping} />
 
 			{/* Chat Body */}
 
@@ -155,6 +175,7 @@ const SingleChat = () => {
 					className={styles.input}
 					onChange={(e) => setMessage(e.target.value)}
 					value={message}
+					onInput={onTyping}
 				/>
 				<button type="submit" className={styles.btn}>
 					<img src={sendIcon} alt="" className={styles.btnImage} />

@@ -1,41 +1,49 @@
 .MychatsWrapper {
-    border: 1px solid #E2E8F0;
-    border-radius: 10px;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
 
-    padding: 15px 10px 10px;
-    width: 100%;
-    height: calc(100vh - 75px - 30px);
-    overflow-y: hidden;
+	padding: 15px 10px 10px;
+	width: 100%;
+	height: calc(100vh - 75px - 30px);
+	overflow-y: hidden;
 
-    min-width: 375px;
+	min-width: 375px;
 }
 
 .personsWrapper {
-    background-color: #f8f8f8;
-    width: 100%;
-    /* parent height = 100vh - 75px - 30px */
-    /* top and bottom padding - 25px */
-    /* header widht - 50px */
-    /* top margin - 20px */
-    height: calc(100vh - 75px - 30px - 25px - 50px - 20px);
+	background-color: #f8f8f8;
+	width: 100%;
+	/* parent height = 100vh - 75px - 30px */
+	/* top and bottom padding - 25px */
+	/* header widht - 50px */
+	/* top margin - 20px */
+	height: calc(100vh - 75px - 30px - 25px - 50px - 20px);
 
-    border-radius: 10px;
-    overflow-y: auto;
+	border-radius: 10px;
+	overflow-y: auto;
 
-    margin-top: 20px;
+	margin-top: 20px;
 
-    padding: 15px;
+	padding: 15px;
 
-
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 }
 
+@media screen and (max-width: 650px) {
+	.MychatsWrapper {
+		height: calc(100vh - 75px - 80px);
+	}
 
+	.personsWrapper {
+	height: calc(100vh - 75px - 80px - 25px - 50px - 20px);
 
-@media screen and (max-width:375px) {
-    .MychatsWrapper {
-        min-width: auto;
-    }
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.MychatsWrapper {
+		min-width: auto;
+	}
 }

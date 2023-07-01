@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// export const URL = "http://localhost:7575";
-export const URL = "https://talk-a-tive-backend-rose.vercel.app";
+export const URL = "http://localhost:7575";
+// export const URL = "https://talk-a-tive-backend-uj3z.onrender.com";
 
 const http = axios.create({
 	baseURL: URL,
